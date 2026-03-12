@@ -17,6 +17,7 @@ function App() {
     { title: "Họ và tên", dataIndex: "name" },
     { title: "Tuổi", dataIndex: "age" },
     { title: "Môn học", dataIndex: "subject" },
+    // {title: "Hinh anh", dataIndex: "image", render: (image: string) => }
   ];
 
   const data = [
