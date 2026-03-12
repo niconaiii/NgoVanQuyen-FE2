@@ -1,28 +1,22 @@
-﻿import { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
-import { Layout } from "antd";
-import { Form, Input, Button } from "antd";
-import { Table } from "antd";
+import { Layout, Table } from 'antd';
+import { Content, Footer, Header } from 'antd/es/layout/layout';
+import { Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
-const { Header, Content, Footer } = Layout;
-function App() {
-  //
-  const onFinish = (values: any) => {
-    console.log("onFinish");
+function Lab2() {
+    const columns = [
+        {title: "ID", dataIndex: "id"},
+        {title: "Name", dataIndex: "name"},
+        {title: "Age", dataIndex: "age"},
+        {title: "Major", dataIndex: "major"},
+    ]
 
-    console.log(values);
-  };
+    const data = [
+        {key: 1, id:1, name: "Nam", age: 20, major: "IT"},
+        {key: 1, id:2, name: "Linh", age: 21, major: "Business"},
+        {key: 1, id:3, name: "Hà", age: 19, major: "Design"},
+    ]
 
-  const columns = [
-    { title: "Họ và tên", dataIndex: "name" },
-    { title: "Tuổi", dataIndex: "age" },
-    { title: "Môn học", dataIndex: "subject" },
-  ];
-
-  const data = [
-    { key: 1, name: "John", age: 25, subject: "Toan" },
-    { key: 2, name: "Ana", age: 20, subject: "Van" },
-  ];
   return (
     <>
       <nav className="bg-blue-600 text-white shadow">
@@ -57,22 +51,6 @@ function App() {
       {/* MAIN CONTENT */}
       <div className="max-w-6xl mx-auto mt-10 px-4 text-center">
         <h1 className="text-4xl font-bold mb-4">Chào mừng đến với WEB2091</h1>
-        <Layout>
-          <Header style={{ color: "white" }}>Header</Header>
-          <Content style={{ padding: 20 }}>
-            <Form onFinish={onFinish}>
-              <Form.Item label="Username" name="username">
-                <Input placeholder="username" />
-              </Form.Item>
-              <Form.Item>
-                <Button htmlType="submit" type="primary">
-                  Submit
-                </Button>
-              </Form.Item>
-            </Form>
-          </Content>
-          <Footer>Footer</Footer>
-        </Layout>
         <Table columns={columns} dataSource={data} />
       </div>
 
@@ -81,4 +59,4 @@ function App() {
   );
 }
 
-export default App;
+export default Lab2
