@@ -1,4 +1,4 @@
-import { Table, Tag } from 'antd';
+import { Table} from 'antd';
 import { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 

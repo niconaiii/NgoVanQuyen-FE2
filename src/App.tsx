@@ -1,6 +1,6 @@
 ﻿import { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { Layout } from "antd";
+import { InputNumber, Layout, Select } from "antd";
 import { Form, Input, Button } from "antd";
 import { Table } from "antd";
 
@@ -61,10 +61,26 @@ function App() {
         <Layout>
           <Header style={{ color: "white" }}>Header</Header>
           <Content style={{ padding: 20 }}>
-            <Form onFinish={onFinish}>
+            <Form layout="vertical" onFinish={onFinish}>
               <Form.Item label="Username" name="username">
                 <Input placeholder="username" />
               </Form.Item>
+              
+              <Form.Item label="password" name="password">
+                <Input.Password placeholder="password" />
+              </Form.Item>
+              <Form.Item label="description" name="description">
+                <Input.TextArea placeholder="description" />
+              </Form.Item>
+              <Form.Item label="price" name="price">
+                <InputNumber type="number" placeholder="price" />
+              </Form.Item>
+              {/* <Form.Item label="Mo ta" name="username">
+                <Select
+                options = ([
+                  {}
+                ]) />
+              </Form.Item> */}
               <Form.Item>
                 <Button htmlType="submit" type="primary">
                   Submit
