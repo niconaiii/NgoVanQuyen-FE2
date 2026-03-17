@@ -28,8 +28,9 @@ export default function StoryForm() {
 
   return (
     <Form layout="vertical" onFinish={onFinish}>
-      <Form.Item name="title" rules={[{ required: true, message: 'Tieu de ko dc de trong' }]}>
-        <label htmlFor="text">Title</label>
+      <Form.Item name="title" label="Name" rules={[
+        {required:true}
+      ]}>
         <Input placeholder="title"></Input>
       </Form.Item>
 

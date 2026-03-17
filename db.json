@@ -1,5 +1,15 @@
 {
   "stories": [],
-  "categories": [],
+  "categories": [
+    {
+      "title": "q",
+      "id": 1
+    },
+    {
+      "title": "Phieu luu",
+      "active": true,
+      "id": 2
+    }
+  ],
   "users": []
 }
