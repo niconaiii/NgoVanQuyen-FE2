@@ -3,16 +3,16 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import "antd/dist/reset.css";
-import Lab2 from "./pages/Lab2";
-import Lab3 from "./pages/Lab3"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      {/* <App /> */}
-      {/* <Lab2/> */}
-      <Lab3 />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );
