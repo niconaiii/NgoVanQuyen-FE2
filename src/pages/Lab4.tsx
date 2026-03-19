@@ -34,8 +34,7 @@ export default function StoryForm() {
         <Input placeholder="title"></Input>
       </Form.Item>
 
-      <Form.Item name="description">
-        <label htmlFor="text">Description</label>
+      <Form.Item name="description" label="Description">
         <Input.TextArea placeholder="description"></Input.TextArea>
       </Form.Item>
 
