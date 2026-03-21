@@ -1,10 +1,9 @@
 {
   "stories": [
     {
-      "title": "Dragon ball",
-      "author": "Toriyama",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxFQYQai8oc9jvVmB_cTQ7o6-QivDDYjzvK3P_1hs9ECn4AOoveytj7LBmbk1i4CEpCuXSroG7W-bYgb6dmY68OMsCWF2u_EQsDVVN0NTc&s=10",
-      "createdAt": "2025-03-06"
+      "title": "Scissor Seven",
+      "author": "Ai biet",
+      "id": 1
     }
   ],
   "categories": [
