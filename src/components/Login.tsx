@@ -27,23 +27,33 @@ function Login() {
   const onFinish = (value: any) => {
     mutate(value);
   };
-  return <div>
-    <Form onFinish={onFinish}>
-        <Form.Item label="Email" name={"email"} rules={[{required: true, message: "Vui long nhap email"}]}>
-            <Input />
+  return (
+    <div>
+      <Form onFinish={onFinish} layout="vertical">
+        <Form.Item
+          label="Email"
+          name={"email"}
+          rules={[{ required: true, message: "Vui long nhap email" }]}
+        >
+          <Input />
         </Form.Item>
 
-        <Form.Item label="Password" name={"password"} rules={[{required: true, message: "Vui long nhap mat khau"}]}>
-            <Input type="password" />
+        <Form.Item
+          label="Password"
+          name={"password"}
+          rules={[{ required: true, message: "Vui long nhap mat khau" }]}
+        >
+          <Input type="password" />
         </Form.Item>
 
         <Form.Item>
-            <Button type="primary" htmlType="submit">
-                Dang nhap
-            </Button>
+          <Button type="primary" htmlType="submit">
+            Dang nhap
+          </Button>
         </Form.Item>
-    </Form>
-  </div>;
+      </Form>
+    </div>
+  );
 }
 
 export default Login;

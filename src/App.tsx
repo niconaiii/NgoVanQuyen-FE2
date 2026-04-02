@@ -1,8 +1,9 @@
 ﻿import { Toaster } from "react-hot-toast";
-import { Table } from "antd";
+// import { Table } from "antd";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import { Route, Routes } from "react-router-dom";
 import StoryForm from "./pages/Lab4";
 import EditStory from "./pages/Lab6";
@@ -21,8 +22,9 @@ function App() {
           <Route path="/add" element={<StoryForm />} />
           <Route path="/edit/:id" element={<EditStory />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
-        <Table columns={[]} dataSource={[]} />
+        {/* <Table columns={[]} dataSource={[]} /> */}
       </div>
 
       <Toaster />
