@@ -1,43 +1,36 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
 import { Button, Form, Input, message } from "antd";
-import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useCRUDStory } from "../hooks/useCRUDStory";
 
 export default function EditStory() {
   const { id } = useParams();
-  const { data } = useQuery({
-    queryKey: ["story"],
-    queryFn: async () => {
-      if (!id) return;
-      const res = await axios.get(`http://localhost:3000/stories/${id}`);
-      return res.data;
-    },
-  });
+  const { list, update } = useCRUDStory();
 
   const nav = useNavigate();
 
   const [form] = Form.useForm();
 
-  useEffect(() => {
-    if (data) {
-      form.setFieldsValue(data);
-    }
-  }, [data]);
+  const story = list?.find((s: any) => s.id === Number(id));
 
-  const mutation = useMutation({
-    mutationFn: async (value: any) => {
-      const res = await axios.put(`http://localhost:3000/stories/${id}`, value);
-      return res.data;
-    },
-    onSuccess: () => {
-      message.success("Cập nhật thành công!");
-      nav("/list");
-    },
-  });
+  useEffect(() => {
+    if (story) {
+      form.setFieldsValue(story);
+    }
+  }, [story, form]);
 
   const onFinish = (value: any) => {
-    mutation.mutate(value);
+    if (id) {
+      update(
+        { id: Number(id), data: value },
+        {
+          onSuccess: () => {
+            message.success("Cập nhật thành công!");
+            nav("/list");
+          },
+        }
+      );
+    }
   };
   return (
     <Form onFinish={onFinish} form={form} layout="vertical">
@@ -55,7 +48,7 @@ export default function EditStory() {
       >
         <Input />
       </Form.Item>
-      <Button htmlType="submit" loading={mutation.isPending}>
+      <Button htmlType="submit">
         Submit
       </Button>
     </Form>

@@ -1,54 +1,50 @@
-import { useMutation } from "@tanstack/react-query";
-import { Button, Checkbox, Form, Input } from "antd";
-import axios from "axios";
+import { Button, Form, Input } from "antd";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useCRUDStory } from "../hooks/useCRUDStory";
 
-interface Category {
+interface StoryData {
   title: string;
-  description: string;
-  active: boolean;
+  author: string;
 }
 
 export default function StoryForm() {
-  const mutation = useMutation({
-    mutationFn: async (data: Category) => {
-      await axios.post("http://localhost:3000/categories", data);
-    },
+  const navigate = useNavigate();
+  const { add } = useCRUDStory();
 
-    onSuccess: () => {
-      toast.success("Them thanh cong");
-    },
-    onError: () => {
-      toast.error("Them that bai");
-    },
-  });
-  const onFinish = (data: Category) => {
-    mutation.mutate(data);
+  const onFinish = (data: StoryData) => {
+    add(data, {
+      onSuccess: () => {
+        toast.success("Thêm truyện thành công!");
+        navigate("/list");
+      },
+      onError: () => {
+        toast.error("Thêm truyện thất bại!");
+      },
+    });
   };
 
   return (
     <Form layout="vertical" onFinish={onFinish}>
-      <Form.Item name="title" label="Name" rules={[
-        {required:true}
-      ]}>
-        <Input placeholder="title"></Input>
+      <Form.Item
+        name="title"
+        label="Tiêu đề"
+        rules={[{ required: true, message: "Vui lòng nhập tiêu đề" }]}
+      >
+        <Input placeholder="Nhập tiêu đề truyện" />
       </Form.Item>
 
-      <Form.Item name="description" label="Description">
-        <Input.TextArea placeholder="description"></Input.TextArea>
+      <Form.Item
+        name="author"
+        label="Tác giả"
+        rules={[{ required: true, message: "Vui lòng nhập tác giả" }]}
+      >
+        <Input placeholder="Nhập tên tác giả" />
       </Form.Item>
 
-      <Form.Item name="active" valuePropName="checked">
-        <Checkbox>Active</Checkbox>
-        
-      </Form.Item>
-
-      <Button htmlType="submit" loading={mutation.isPending}>
-        Submit
+      <Button htmlType="submit" type="primary">
+        Thêm truyện
       </Button>
-      {mutation.isSuccess && (
-        <div style={{ color: "green" }}>Story created successfully!</div>
-      )}
     </Form>
   );
 }
